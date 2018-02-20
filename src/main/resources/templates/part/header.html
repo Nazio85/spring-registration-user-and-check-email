@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+<body>
+<!-- start Header -->
+<header id="header" th:fragment="header">
+
+    <!-- start Navbar (MenuRepository) -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
+
+        <div class="container">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{~/}"><i class="fa fa-camera-retro"></i>Registration</a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse navbar-arrow pull-left">
+
+                <ul class="nav navbar-nav" id="responsive-menu">
+                    <li>
+                        <a th:text="#{homeMenu}" th:href="@{~/}"></a>
+                    </li>
+                    <li>
+                        <a th:text="#{interior}" href="/interior"></a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="pull-right">
+                <div class="navbar-mini">
+                    <ul class="clearfix">
+                        <li class="user-action">
+                            <a data-toggle="modal" th:text="#{singInUp}" href="#loginModal" class="btn"></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="slicknav-mobile"></div>
+
+    </nav>
+    <!-- end Navbar (MenuRepository) -->
+
+</header>
+<!-- end Header -->
+</body>
+</html>

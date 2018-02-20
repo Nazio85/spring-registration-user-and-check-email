@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+<!-- BEGIN # MODAL LOGIN -->
+<div th:fragment="login-form" class="modal fade modal-login modal-border-transparent" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <button type="button" class="btn btn-close close" data-dismiss="modal" aria-label="Close">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+
+            <div class="clear"></div>
+
+            <!-- Begin # DIV Form -->
+            <div id="modal-login-form-wrapper">
+
+                <!-- Begin # Login Form -->
+                <form id="login-form" th:action="@{~/login}" method="post">
+
+                    <div class="modal-body pb-5">
+
+                        <h4 th:text="#{singInUp}"></h4>
+
+                        <div class="form-group">
+                            <input id="login_username" name="username" class="form-control" th:placeholder="#{email}" type="email"/>
+                        </div>
+                        <div class="form-group">
+                            <input id="login_password" name="password" class="form-control" th:placeholder="#{password}" type="password"/>
+                        </div>
+
+                        <div class="form-group mt-10 mb-10">
+                            <div class="row gap-5">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="checkbox-block fa-checkbox">
+                                        <input id="remember_me_checkbox" name="remember_me_checkbox" class="checkbox" value="First Choice" type="checkbox"/>
+                                        <label class="" for="remember_me_checkbox" th:text="#{remember}"></label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right mt-5">
+                                    <button id="login_lost_btn" type="button" class="btn btn-link" th:text="#{forgotPassword}"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+
+                        <div class="row gap-10">
+                            <div class="col-xs-6 col-sm-6 mb-10">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block" th:text="#{singInUp}"></button>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 mb-10">
+                                <button type="submit" class="btn btn-main btn-sm btn-block btn-inverse" data-dismiss="modal" aria-label="Close" th:text="#{cancel}"></button>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <span th:text="#{noAccount}"></span>
+                            <button id="login_register_btn" type="button" class="btn btn-link" th:text="#{register}"></button>
+                        </div>
+
+                    </div>
+
+                </form>
+                <!-- End # Login Form -->
+
+
+
+
+                <!-- Begin | Lost Password Form -->
+                <form id="lost-form" style="display:none;" th:action="@{~/login/remind-password}" method="post">
+                    <div class="modal-body pb-5">
+
+                        <h4 th:text="#{forgotPassword}">Forgot password</h4>
+
+                        <div class="form-group">
+                            <input id="lost_email" class="form-control" type="text" name="email" th:placeholder="#{enterYourEmail}"/>
+                        </div>
+
+                        <div class="text-center mt-10 mb-10">
+                            <button id="lost_login_btn" type="button" class="btn btn-link" th:text="#{singInUp}">Sign-in</button>
+                            <span th:text="#{or}"></span>
+                            <button id="lost_register_btn" type="button" class="btn btn-link" th:text="#{register}">Register</button>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer mt-10">
+
+                        <div class="row gap-10">
+                            <div class="col-xs-6 col-sm-6">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block" th:text="#{submit}">Submit</button>
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <button type="submit" class="btn btn-main btn-sm btn-inverse btn-block" data-dismiss="modal" aria-label="Close" th:text="#{cancel}">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+                <!-- End | Lost Password Form -->
+
+
+                <!-- Begin | Register Form -->
+                <form th:action="@{~/login/registration}" method="post" id="register-form" style="display:none;">
+
+                    <div class="modal-body pb-5">
+
+                        <h4 th:text="#{register}"></h4>
+
+                        <div class="form-group">
+                            <input id="register_username" name="userName" class="form-control" type="text" th:placeholder="#{login}" th:required="true"/>
+                        </div>
+
+                        <div class="form-group">
+                            <input id="register_email" name="email" class="form-control" type="email" th:placeholder="#{email}" th:required="true"/>
+                        </div>
+
+                        <div class="form-group">
+                            <input id="register_password" name="password" class="form-control" type="password" th:placeholder="#{password}" th:required="true"/>
+                        </div>
+
+                        <!--<div class="form-group">-->
+                            <!--<input id="register_password_confirm" class="form-control" type="password" th:placeholder="#{confirmPassord}" th:required="true"/>-->
+                        <!--</div>-->
+
+                        <div class="clear mb-10"></div>
+
+                    </div>
+
+                    <div class="modal-footer mt-10">
+
+                        <div class="row gap-10">
+                            <div class="col-xs-6 col-sm-6 mb-10">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block" th:text="#{register}"></button>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 mb-10">
+                                <button type="submit" class="btn btn-main btn-sm btn-inverse btn-block" data-dismiss="modal" aria-label="Close" th:text="#{cancel}"></button>
+                            </div>
+                        </div>
+
+                        <div class="text-left">
+                            <span th:text="#{alreadyHaveAccount}"></span>
+                            <button id="register_login_btn" type="button" class="btn btn-link" th:text="#{singInUp}">Sign-in</button>
+                        </div>
+
+                    </div>
+
+                </form>
+                <!-- End | Register Form -->
+
+            </div>
+            <!-- End # DIV Form -->
+
+        </div>
+    </div>
+
+</div>
+<!-- END # MODAL LOGIN -->
+
+</body>
+
+</html>

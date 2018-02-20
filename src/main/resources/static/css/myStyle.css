@@ -1,0 +1,12 @@
+.errorMessage {
+    background-color: #999999;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.errorMessage h3 {
+    margin-bottom: 0;
+    padding-top: 15px;
+    color: #ffbf02;
+}
